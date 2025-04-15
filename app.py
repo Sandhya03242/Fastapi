@@ -74,3 +74,4 @@ def delete_employee(employees_id:int):
     if employees_id not in employees:
         return "employee does not exist"
     del employees[employees_id]
+handler = Mangum(app)
