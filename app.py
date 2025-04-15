@@ -64,6 +64,16 @@ async def create_employees(employee: EmployeeModel = Depends(as_form), avatar: U
 #         return FileResponse(image_path, media_type="image/avif")
 #     return {"Error": "Image not found"}
 
+from fastapi.responses import FileResponse
+
+@app.get("/get-image/{image_name}")
+async def get_image(image_name: str):
+    image_path = os.path.join("public", "image", image_name)
+    if os.path.exists(image_path):
+        return FileResponse(image_path, media_type="image/avif")
+    return {"Error": "Image not found"}
+
+
 @app.put("/update-employee/{employees_id}")
 async def update_employee(employees_id: int, employee: UpdateEmployeeModel):
     if employees_id not in employees:
