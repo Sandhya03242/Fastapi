@@ -83,4 +83,4 @@ async def delete_employee(employees_id: int):
     del employees[employees_id]
     return {"Success": "Employee deleted"}
 
-handler = Mangum(app)
+handler = Mangum(app,lifespan="off")
